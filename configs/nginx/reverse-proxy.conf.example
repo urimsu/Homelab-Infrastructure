@@ -1,0 +1,17 @@
+# EXAMPLE ONLY — illustrative proxy host; values are placeholders.
+server {
+    listen 443 ssl;
+    server_name service.example.com;
+
+    # Configure certificate paths through a reviewed local certificate workflow.
+    ssl_certificate <PATH_TO_CERTIFICATE>;
+    ssl_certificate_key <PATH_TO_PRIVATE_KEY>;
+
+    location / {
+        proxy_pass https://<SERVICE_IP>:<SERVICE_PORT>;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}

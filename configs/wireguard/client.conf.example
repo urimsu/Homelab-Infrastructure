@@ -1,0 +1,13 @@
+# EXAMPLE ONLY — use a locally generated private key and a real endpoint.
+[Interface]
+Address = 10.66.0.2/24
+PrivateKey = <WG_PRIVATE_KEY>
+# Optional: set DNS to a reachable resolver such as the VPN-side Pi-hole.
+# DNS = <RASPBERRY_PI_IP>
+
+[Peer]
+PublicKey = <WG_PUBLIC_KEY>
+Endpoint = <VPS_PUBLIC_IP>:51820
+# Keep routes narrow; replace with the actual VPN and required LAN ranges.
+AllowedIPs = 10.66.0.0/24, 192.168.X.0/24
+PersistentKeepalive = 25

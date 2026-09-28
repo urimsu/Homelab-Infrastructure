@@ -1,0 +1,12 @@
+# EXAMPLE ONLY — replace placeholders and review routing/firewall behavior.
+[Interface]
+Address = 10.66.0.1/24
+ListenPort = 51820
+PrivateKey = <WG_PRIVATE_KEY>
+
+[Peer]
+# Raspberry Pi / home gateway public key
+PublicKey = <WG_PUBLIC_KEY>
+# Example tunnel peer plus the home subnet routed behind this peer.
+AllowedIPs = 10.66.0.2/32, 192.168.X.0/24
+# Endpoint is omitted on the listening server when the peer initiates.
